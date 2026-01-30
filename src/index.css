@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* R107 Garage Design System - Dark Automotive Theme */
+
+@layer base {
+  :root {
+    /* Core Dark Theme */
+    --background: 220 20% 8%;
+    --foreground: 0 0% 98%;
+
+    /* Cards - slightly lighter than background */
+    --card: 220 18% 12%;
+    --card-foreground: 0 0% 98%;
+
+    /* Popover */
+    --popover: 220 18% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Red accent (Mercedes classic) */
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Blue accent */
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted surfaces */
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    /* Accent */
+    --accent: 220 15% 20%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 220 15% 22%;
+    --input: 220 15% 20%;
+    --ring: 0 72% 51%;
+
+    --radius: 0.75rem;
+
+    /* Custom R107 colors */
+    --r107-red: 0 72% 51%;
+    --r107-red-glow: 0 72% 60%;
+    --r107-blue: 210 100% 45%;
+    --r107-blue-glow: 210 100% 55%;
+    --r107-gold: 45 80% 55%;
+    --r107-chrome: 220 10% 75%;
+    --r107-dark: 220 20% 6%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 8%) 0%, hsl(220 18% 14%) 50%, hsl(0 30% 15%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 14%) 0%, hsl(220 18% 10%) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(0 72% 45%) 0%, hsl(0 72% 55%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(210 100% 40%) 0%, hsl(210 100% 50%) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow-red: 0 0 30px hsl(0 72% 51% / 0.3);
+    --shadow-glow-blue: 0 0 30px hsl(210 100% 45% / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 72% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 0 0% 98%;
+    --card: 220 18% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 18% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 15% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 22%;
+    --input: 220 15% 20%;
+    --ring: 0 72% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Card variants */
+  .card-automotive {
+    @apply bg-card border border-border rounded-lg;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply border-primary/50;
+    box-shadow: var(--shadow-glow-red);
+    transform: translateY(-2px);
+  }
+
+  /* Section boxes */
+  .section-red {
+    @apply border-l-4 rounded-lg p-6;
+    border-left-color: hsl(var(--r107-red));
+    background: linear-gradient(90deg, hsl(0 72% 51% / 0.1) 0%, transparent 100%);
+  }
+
+  .section-blue {
+    @apply border-l-4 rounded-lg p-6;
+    border-left-color: hsl(var(--r107-blue));
+    background: linear-gradient(90deg, hsl(210 100% 45% / 0.1) 0%, transparent 100%);
+  }
+
+  /* Hero section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply relative px-4 py-2 text-muted-foreground transition-colors duration-200;
+  }
+
+  .nav-link:hover {
+    @apply text-foreground;
+  }
+
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full;
+  }
+
+  /* Buttons */
+  .btn-primary-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-primary-glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: var(--shadow-glow-red);
+    filter: blur(20px);
+  }
+
+  .btn-primary-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Chrome/metallic text */
+  .text-chrome {
+    background: linear-gradient(180deg, hsl(220 10% 90%) 0%, hsl(220 10% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Skeleton loading */
+  .skeleton-automotive {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  /* Badge variants */
+  .badge-rss {
+    @apply bg-secondary/20 text-secondary border border-secondary/30;
+  }
+
+  .badge-user {
+    @apply bg-primary/20 text-primary border border-primary/30;
+  }
+
+  .badge-pending {
+    @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+  }
+
+  .badge-approved {
+    @apply bg-green-500/20 text-green-400 border border-green-500/30;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-muted/50 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Text gradient */
+  .text-gradient-red {
+    background: linear-gradient(135deg, hsl(0 72% 55%) 0%, hsl(0 72% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-red {
+    box-shadow: var(--shadow-glow-red);
+  }
+
+  .glow-blue {
+    box-shadow: var(--shadow-glow-blue);
+  }
+
+  /* Animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+}

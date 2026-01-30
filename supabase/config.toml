@@ -1,0 +1,19 @@
+project_id = "xcbufsemfbklgbcmkitn"
+
+[functions.ingest-rss]
+verify_jwt = true
+
+[functions.reprocess-listings]
+verify_jwt = true
+
+[functions.send-confirmation-email]
+verify_jwt = false
+
+[functions.send-notification-email]
+verify_jwt = false
+
+[functions.sitemap]
+verify_jwt = false
+
+[functions.convert-to-webp]
+verify_jwt = false
